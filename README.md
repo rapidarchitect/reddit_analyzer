@@ -1,6 +1,6 @@
 # Reddit Topic Analysis Tool
 
-A Streamlit application that analyzes Reddit posts on any topic using AI-powered insights. This tool combines Reddit's API with local LLMs through Ollama to provide meaningful analysis of Reddit discussions.
+A Streamlit application that analyzes Reddit posts on any topic using AI-powered insights. This tool combines Reddit's API with local LLMs through Ollama to provide meaningful analysis of Reddit discussions. It weights the summarization by the Reddit Score value.
 
 ## Features
 

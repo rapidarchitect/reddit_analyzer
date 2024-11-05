@@ -4,6 +4,12 @@ import ollama
 from typing import List, Dict
 
 
+## Set to your production values
+APP_ID = "GBFYIgcOttkM61vPhlztqw"
+APP_SECRET = "bODxWCRaXKxX71yey5JrOzlIBZrxeg"
+USER_AGENT = "testingLangchain"
+
+
 def get_available_models() -> List[str]:
     """Fetch available models from Ollama."""
     try:
@@ -76,9 +82,9 @@ def main():
         # Reddit API credentials
         st.subheader("Reddit Settings")
         # app_id = st.text_input("Reddit App ID", value="GBFYIgcOttkM61vPhlztqw")
-        app_id = "GBFYIgcOttkM61vPhlztqw"
-        app_secret = "bODxWCRaXKxX71yey5JrOzlIBZrxeg"
-        user_agent = "testingLangchain"
+        app_id = APP_ID
+        app_secret = APP_SECRET
+        user_agent = USER_AGENT
         # app_secret = st.text_input(
         #    "Reddit App Secret", value="bODxWCRaXKxX71yey5JrOzlIBZrxeg", type="password"
         # )

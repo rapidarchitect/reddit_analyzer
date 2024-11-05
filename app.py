@@ -71,34 +71,37 @@ def main():
 
     # Sidebar for configurations
     with st.sidebar:
-        st.header("Configuration")
+        st.header("Settings")
 
         # Reddit API credentials
-        st.subheader("Reddit API Credentials")
-        app_id = st.text_input("Reddit App ID", value="GBFYIgcOttkM61vPhlztqw")
-        app_secret = st.text_input(
-            "Reddit App Secret", value="bODxWCRaXKxX71yey5JrOzlIBZrxeg", type="password"
-        )
-        user_agent = st.text_input("User Agent", value="testingLangchain")
+        st.subheader("Reddit Settings")
+        # app_id = st.text_input("Reddit App ID", value="GBFYIgcOttkM61vPhlztqw")
+        app_id = "GBFYIgcOttkM61vPhlztqw"
+        app_secret = "bODxWCRaXKxX71yey5JrOzlIBZrxeg"
+        user_agent = "testingLangchain"
+        # app_secret = st.text_input(
+        #    "Reddit App Secret", value="bODxWCRaXKxX71yey5JrOzlIBZrxeg", type="password"
+        # )
+        # user_agent = st.text_input("User Agent", value="testingLangchain")
 
         # Number of posts to analyze
         num_posts = st.slider(
             "Number of posts to analyze", min_value=1, max_value=20, value=5
         )
+        st.subheader("Model Settings")
+        # Get available Ollama models
+        available_models = get_available_models()
+        if not available_models:
+            st.error(
+                "No Ollama models available. Please ensure Ollama is running and has models installed."
+            )
+            st.stop()
 
+        # Model selection and topic input
+        selected_model = st.selectbox("Select Ollama Model", available_models)
     # Main content area
     st.header("Topic Analysis")
 
-    # Get available Ollama models
-    available_models = get_available_models()
-    if not available_models:
-        st.error(
-            "No Ollama models available. Please ensure Ollama is running and has models installed."
-        )
-        st.stop()
-
-    # Model selection and topic input
-    selected_model = st.selectbox("Select Ollama Model", available_models)
     topic = st.text_input("Enter a topic to analyze")
 
     if st.button("Analyze Topic"):
